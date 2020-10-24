@@ -20,8 +20,8 @@ const Authorization = () => {
         <div className={styles.container}>
             <div className={styles.login}>
                 <Logo />
-                <p>Вход на платформу тестирования</p>
-                <form onSubmit={handleSubmit}>
+                <p className={styles.title}>Вход на платформу тестирования</p>
+                <form onSubmit={handleSubmit} className={styles.formContainer}>
                     <div className={styles.form}>
                         <label className="text-xs">Логин</label>
                         <input
@@ -41,7 +41,9 @@ const Authorization = () => {
                             type="password"
                         />
                     </div>
-                    <Button disabled={!validateForm()} type={'submit'} text={'Войти'} />
+                    <div className={styles.button}>
+                        <Button disabled={!validateForm()} type={'submit'} text={'Войти'} />
+                    </div>
                 </form>
             </div>
         </div>
