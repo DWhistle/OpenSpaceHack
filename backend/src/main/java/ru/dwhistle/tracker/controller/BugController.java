@@ -1,6 +1,8 @@
 package ru.dwhistle.tracker.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -8,16 +10,15 @@ import ru.dwhistle.tracker.backend.db.beans.*;
 import ru.dwhistle.tracker.backend.db.repository.BugReportRepository;
 import ru.dwhistle.tracker.backend.db.repository.BugRepository;
 import ru.dwhistle.tracker.backend.service.UserService;
+import ru.dwhistle.tracker.backend.service.api.Bug;
+import ru.dwhistle.tracker.backend.service.api.BugReport;
 import ru.dwhistle.tracker.backend.service.api.ReportMessage;
 import ru.dwhistle.tracker.controller.api.BugRequest;
 import ru.dwhistle.tracker.controller.api.ReportMessageAddRequest;
 
 import javax.validation.Valid;
 import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @RestController("/bug")
@@ -26,6 +27,7 @@ public class BugController {
     private final BugRepository bugRepository;
     private final UserService userService;
     private final BugReportRepository bugReportRepository;
+    private final int PAGE_SIZE = 20;
 
     @Autowired
     public BugController(UserService userService, BugRepository bugRepository, BugReportRepository bugReportRepository) {
@@ -70,6 +72,27 @@ public class BugController {
                                 me.getCreationDate(),
                                 me.getId())).collect(Collectors.toList())))
                 .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
+    }
+
+    @GetMapping("/reports/{page}")
+    public ResponseEntity<List<BugReport>> getAllReports(@PathVariable("page") int page) {
+        Page<BugReportEntity> pagedEntities = bugReportRepository.findAll(PageRequest.of(page, PAGE_SIZE));
+        return ResponseEntity.ok(pagedEntities.get().map(pe -> {
+            BugEntity bugSpecification = pe.getBugSpecification();
+            return new BugReport(pe.getId(), pe.getReward(), pe.getStatusEnum(), pe.getSourceEnum(),
+                    new Bug(bugSpecification.getId(),
+                            bugSpecification.getName(),
+                            bugSpecification.getOs(),
+                            bugSpecification.getOsVersion(),
+                            bugSpecification.getAppVersion(),
+                            bugSpecification.getStepsToReproduce(),
+                            bugSpecification.getScreenshotUrl(),
+                            bugSpecification.getCreationTime(),
+                            UserService.entityUserToApi(bugSpecification.getBugCreator())
+                    ),
+                    Collections.emptyList()
+            );
+        }).collect(Collectors.toList()));
     }
 
     @PostMapping("/message/add")
