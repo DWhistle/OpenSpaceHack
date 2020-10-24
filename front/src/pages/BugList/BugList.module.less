@@ -12,13 +12,86 @@
     height: 100%;
     overflow: scroll;
     display: flex;
+    align-items: flex-start;
+    padding: 0 5vw;
+    justify-content: space-between;
     flex-wrap: wrap;
+    background: #F3F7F9;
 }
 
 .bug_card {
+    @media screen and (max-width: 1440px) {
+        flex-basis: 45%;
+    }
+    @media screen and (max-width: 960px) {
+        flex-basis: 95%;
+    }
+    flex-basis: 30%;
     display: flex;
     align-items: center;
     justify-content: flex-start;
     flex-direction: column;
-    flex-basis: 33%;
+    border-radius: 8px;
+    background: white;
+    padding: 2vw;
+    margin-bottom: 2vw;
+    &__header {
+        display: flex;
+        align-items: flex-start;
+        justify-content: flex-start;
+        width: 100%;
+
+        &__tags_list {
+            flex: 1;
+            flex-wrap: wrap;
+            display: flex;
+            align-items: flex-start;
+            justify-content: flex-start;
+            &__item {
+                padding: 5px 15px;
+                color: #FFF;
+                border-radius: 43px;
+                margin: 0 5px 5px 0;
+            }
+            &__empty {
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding: 5px 15px;
+                color: #02BAE8;
+                font-size: 14px;
+                border-radius: 43px;
+                margin: 0 5px 5px 0;
+                background: rgba(#02BAE8, 20%);
+            }
+        }
+        &__attachments {
+            cursor: default;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 5px 15px;
+            color: #02BAE8;
+            font-size: 14px;
+            border-radius: 43px;
+            margin: 0 5px 5px 0;
+            background: rgba(#02BAE8, 20%);
+        }
+    }
+    &__body {
+        display: flex;
+        align-items: flex-start;
+        justify-content: flex-start;
+        flex-direction: column;
+        &__title {
+            font-size: 36px;
+        }
+        &__description {
+            font-size: 24px;
+        }
+    }
+    &__footer {
+
+    }
 }
