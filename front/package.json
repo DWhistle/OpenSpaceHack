@@ -1,0 +1,44 @@
+{
+  "name": "v-hack",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^9.3.2",
+    "@testing-library/user-event": "^7.1.2",
+    "axios": "^0.19.2",
+    "opentok-react": "^0.10.0",
+    "react": "^16.6.3",
+    "react-app-rewire-less": "^2.1.3",
+    "react-app-rewired": "^1.6.2",
+    "react-big-calendar": "^0.24.5",
+    "react-calendar": "^3.0.1",
+    "react-datepicker": "^2.14.1",
+    "react-dom": "^16.6.3",
+    "react-image-lightbox": "^5.1.1",
+    "react-scripts": "2.1.1",
+    "socket.io": "^2.3.0",
+    "socket.io-adapter": "^1.1.2",
+    "socket.io-client": "^2.3.0"
+  },
+  "scripts": {
+    "start": "react-app-rewired start",
+    "build": "react-app-rewired build",
+    "test": "react-app-rewired test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ],
+  "devDependencies": {
+    "eslint": "5.6.0",
+    "eslint-config-wiremore": "^4.0.0",
+    "react-app-rewire-less-modules": "^1.3.0"
+  }
+}
