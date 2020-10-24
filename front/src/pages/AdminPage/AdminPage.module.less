@@ -1,0 +1,49 @@
+.container {
+    display: flex;
+    height: 100%;
+
+    .navigation {
+        background: #FFFFFF;
+        box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.12), 0px 3px 10px rgba(0, 0, 0, 0.1);
+        height: 100%;
+        width: 15%;
+    }
+
+    .logo {
+        padding: 12px 24px;
+    }
+
+    .navItem {
+        align-items: center;
+        color: #535E6E;
+        cursor: pointer;
+        display: flex;
+        height: 48px;
+
+        &:hover {
+            color: #02BAE8;
+            path {
+                stroke: #02BAE8;
+            }
+        }
+
+        .content {
+            align-items: center;
+            display: flex;
+            padding-left: 24px;
+            .icon {
+                margin-right: 8px;
+            }
+        }
+    }
+
+    .selected {
+        color: #000000;
+        background: rgba(2, 186, 232, 0.1);
+        path {
+            stroke: #02BAE8;
+        }
+    }
+
+}
+
