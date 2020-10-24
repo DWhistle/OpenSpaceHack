@@ -1,12 +1,9 @@
-import React from 'react';
-import './App.less';
+import React from 'react'
+import './App.less'
+import Authorization from './pages/Authorization/Authorization'
 
 function App() {
-  return (
-      <div className="App">
-          Here's your app
-      </div>
-  );
+    return <Authorization />
 }
 
-export default App;
+export default App
