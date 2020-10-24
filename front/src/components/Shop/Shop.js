@@ -50,6 +50,27 @@ const items = [
         price: '500',
         available: true,
     },
+    {
+        title: 'Футболка',
+        descripton: 'Очень красивая футболочка для вас и вашей милой дамы',
+        image: tshirt,
+        price: '1250',
+        available: true,
+    },
+    {
+        title: 'Носки',
+        descripton: 'Очень красивая футболочка для вас и вашей милой дамы',
+        image: socks,
+        price: '500',
+        available: true,
+    },
+    {
+        title: 'Худак',
+        descripton: 'Очень красивая футболочка для вас и вашей милой дамы',
+        image: hoodie,
+        price: '2500',
+        available: false,
+    },
 ]
 
 export const ProgressBar = () => {
