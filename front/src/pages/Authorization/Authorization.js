@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import Button from '../../components/Button/Button'
 import { ReactComponent as Logo } from '../../assets/img/bankLogo.svg'
-
 import styles from './Authorization.module.less'
+import '../../App.less'
 
 const Authorization = () => {
     const [login, setLogin] = useState('')
@@ -17,30 +17,33 @@ const Authorization = () => {
     }
 
     return (
-        <div className={styles.login}>
-            <form onSubmit={handleSubmit}>
+        <div className={styles.container}>
+            <div className={styles.login}>
                 <Logo />
                 <p>Вход на платформу тестирования</p>
-                <div className={styles.form}>
-                    <label>Логин</label>
-                    <input
-                        autoFocus
-                        type="login"
-                        value={login}
-                        onChange={(e) => setLogin(e.target.value)}
-                    />
-                </div>
-                <div className={styles.form}>
-                    <label>Пароль</label>
-                    <input
-                        className={styles.input}
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                        type="password"
-                    />
-                </div>
-                <Button disabled={!validateForm()} type={'submit'} text={'Войти'} />
-            </form>
+                <form onSubmit={handleSubmit}>
+                    <div className={styles.form}>
+                        <label className="text-xs">Логин</label>
+                        <input
+                            className={styles.input}
+                            autoFocus
+                            type="login"
+                            value={login}
+                            onChange={(e) => setLogin(e.target.value)}
+                        />
+                    </div>
+                    <div className={styles.form}>
+                        <label className="text-xs">Пароль</label>
+                        <input
+                            className={styles.input}
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                            type="password"
+                        />
+                    </div>
+                    <Button disabled={!validateForm()} type={'submit'} text={'Войти'} />
+                </form>
+            </div>
         </div>
     )
 }

@@ -3,11 +3,7 @@ import './App.less'
 import Authorization from './pages/Authorization/Authorization'
 
 function App() {
-    return (
-        <div className="App">
-            <Authorization />
-        </div>
-    )
+    return <Authorization />
 }
 
 export default App
