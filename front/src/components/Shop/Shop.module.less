@@ -1,0 +1,112 @@
+.container {
+    background: #F2F6F9;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    height: 100%;
+    width: 100%;
+    padding: 32px 0;
+
+    .item {
+        background: #FFFFFF;
+        box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.12), 0px 3px 10px -6px rgba(0, 0, 0, 0.12);
+        border-radius: 8px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: 25%;
+        height: 360px;
+        margin: 0 32px 32px 0;
+        min-width: 290px;
+        padding: 32px;
+        transition: all .2s ease-in-out;
+
+        &:hover {
+            transform: scale(1.05);
+        }
+
+        .photo {
+            align-items: center;
+            display: flex;
+            justify-content: center;
+            height: 250px;
+            margin: auto;
+            margin-bottom: 16px;
+            overflow: hidden;
+            position: relative;
+            width: 250px;
+
+            .mainPhoto {
+                height: auto;
+                left: auto;
+                max-height: 100%;
+                max-width: 100%;
+                position: absolute;
+                top: auto;
+                width: auto;
+                //animation: slide 10s ease-in-out infinite;
+            }
+        }
+
+        .disabledPhoto {
+            img {
+                -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+                filter: grayscale(100%);
+            }
+        }
+
+        .infoBlock {
+            display: flex;
+            padding-bottom: 24px;
+            .descrBlock {
+                display: block;
+                padding: 0 24px 0 0;
+
+                .title {
+                    color: #02BAE8;
+                    font-style: normal;
+                    font-weight: normal;
+                    font-size: 16px;
+                    line-height: 20px;
+
+                }
+
+                .text {
+                    color: #535E6E;
+                    font-style: normal;
+                    font-weight: normal;
+                    font-size: 12px;
+                    line-height: 14px;
+                    letter-spacing: 0.01em;
+                    word-break: break-word;
+                }
+            }
+            .price {
+                color: #535E6E;
+                font-style: normal;
+                font-weight: bold;
+                font-size: 20px;
+                line-height: 20px;
+                letter-spacing: 0.01em;
+                margin-right: 4px;
+            }
+
+            .rub {
+                color: #535E6E;
+                font-style: normal;
+                font-weight: normal;
+                font-size: 12px;
+                line-height: 20px;
+                letter-spacing: 0.01em;
+            }
+        }
+
+        .bottomBlock {
+            align-items: center;
+            justify-content: flex-end;
+            display: flex;
+        }
+
+
+    }
+}
