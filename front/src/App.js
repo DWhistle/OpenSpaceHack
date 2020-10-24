@@ -6,6 +6,7 @@ import TesterPage from './pages/TesterPage/TesterPage'
 
 const App = () => {
     const [user, setUser] = useState('')
+    // const [user, setUser] = useState('admin')
 
     return !user ? (
         <Authorization setUser={setUser} />

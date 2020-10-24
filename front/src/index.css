@@ -12,6 +12,19 @@
     /*url('../fonts/open-sans-v13-latin-regular.svg#OpenSans') format('svg'); !* Legacy iOS *!*/
 }
 
+#root {
+    height:100vh;
+    width:100vw;
+}
+
+ul {
+    padding-left: 0;
+}
+
+ul li {
+    list-style-type: none;
+}
+
 textarea, input{
     outline: none;
 }
@@ -30,6 +43,7 @@ body, html {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     width: 100%;
+    height: 100%;
 }
 
 code {
