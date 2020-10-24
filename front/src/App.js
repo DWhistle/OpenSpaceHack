@@ -5,8 +5,8 @@ import AdminPage from './pages/AdminPage/AdminPage'
 import TesterPage from './pages/TesterPage/TesterPage'
 
 const App = () => {
-    const [user, setUser] = useState('')
-    // const [user, setUser] = useState('tester')
+    // const [user, setUser] = useState('')
+    const [user, setUser] = useState('tester')
 
     return !user ? (
         <Authorization setUser={setUser} />

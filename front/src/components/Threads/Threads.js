@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import TabBar from '../TabBar'
 import SearchPanel from '../SearchPanel/SearchPanel'
 import styles from './Threads.module.less'
-import plusIcon from '../../icons/plus.svg'
+import BugReport from '../BugReport/BugReport'
 
 const items = [
     {
@@ -26,12 +26,12 @@ const threadsData = [
             {
                 name: 'iOs',
                 color: 'rgba(0, 212, 72, 0.4)',
-                id: 0,
+                id: 1,
             },
             {
                 name: 'авторизация',
                 color: 'rgba(219, 0, 44, 0.4)',
-                id: 0,
+                id: 2,
             },
         ],
         date: '23.10.2020 в 19:34',
@@ -88,42 +88,47 @@ const threadsData = [
     },
 ]
 
-const ExpandedTweet = () => {}
-
-const Tweet = ({ title, tags, description, liked, date }) => {
+const BugReportPage = ({ bug }) => {
     return (
-        <div className={styles.tweet}>
+        <div>
+            тут детальный твит
+            <BugReport bug={bug} />
+        </div>
+    )
+}
+
+const Tweet = ({ item, showTweet, setSelectedBug }) => {
+    const chooseBug = () => {
+        showTweet(true)
+        setSelectedBug(item)
+    }
+
+    return (
+        <div className={styles.tweet} onClick={() => chooseBug()}>
             <div className={styles.top}>
-                <span className={styles.title}>{title}</span>
+                <span className={styles.title}>{item.title}</span>
                 <div className={styles.tags}>
-                    {tags.map((tag) => (
+                    {item.tags.map((tag) => (
                         <div key={tag.id} className={styles.item} style={{ background: tag.color }}>
                             <span>{tag.name}</span>
                         </div>
                     ))}
                 </div>
             </div>
-            <div className={styles.description}>{description}</div>
+            <div className={styles.description}>{item.description}</div>
             <div className={styles.bottom}>
-                <div className={styles.liked}>{liked}</div>
-                <span className={styles.date}>{date}</span>
+                <div className={styles.liked}>{item.liked}</div>
+                <span className={styles.date}>{item.date}</span>
             </div>
         </div>
     )
 }
 
-const ThreadsContainer = ({ data }) => {
+const ThreadsContainer = ({ data, showTweet, setSelectedBug }) => {
     return (
         <div className={styles.container}>
             {data.map((item, i) => (
-                <Tweet
-                    key={i}
-                    title={item.title}
-                    tags={item.tags}
-                    description={item.description}
-                    liked={item.liked}
-                    date={item.date}
-                />
+                <Tweet key={i} item={item} showTweet={showTweet} setSelectedBug={setSelectedBug} />
             ))}
         </div>
     )
@@ -132,6 +137,8 @@ const ThreadsContainer = ({ data }) => {
 const Threads = () => {
     const [activeItem, setActiveItem] = useState(items[0])
     const [showData, setShowData] = useState(threadsData.filter((el) => el.isActive))
+    const [showDetailedTweet, setShowDetailedTweet] = useState(false)
+    const [selectedBug, setSelectedBug] = useState({})
 
     useEffect(() => {
         if (activeItem.id === 0) {
@@ -144,8 +151,18 @@ const Threads = () => {
     return (
         <>
             <SearchPanel />
-            <TabBar items={items} activeItem={activeItem} setActiveItem={setActiveItem} />
-            <ThreadsContainer data={showData} />
+            {!showDetailedTweet ? (
+                <>
+                    <TabBar items={items} activeItem={activeItem} setActiveItem={setActiveItem} />
+                    <ThreadsContainer
+                        data={showData}
+                        showTweet={setShowDetailedTweet}
+                        setSelectedBug={setSelectedBug}
+                    />
+                </>
+            ) : (
+                <BugReportPage bug={selectedBug} />
+            )}
         </>
     )
 }
