@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import React from 'react'
 import styles from './CommentInfo.module.css'
-import logo from '../../../imgs/defaultAva.png'
+import logo from '../../../assets/comments/defaultAva.png'
 
 const UserData = ({ comment }) => {
     const { userAva, userName, commentDate, deleted } = comment

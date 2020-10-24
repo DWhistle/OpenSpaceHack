@@ -3,6 +3,7 @@ import TabBar from '../TabBar'
 import SearchPanel from '../SearchPanel/SearchPanel'
 import styles from './Threads.module.less'
 import BugReport from '../BugReport/BugReport'
+import Comments from '../Comments'
 
 const items = [
     {
@@ -90,10 +91,12 @@ const threadsData = [
 
 const BugReportPage = ({ bug }) => {
     return (
-        <div>
-            тут детальный твит
+        <>
             <BugReport bug={bug} />
-        </div>
+            <div className={styles.comments}>
+                <Comments />
+            </div>
+        </>
     )
 }
 

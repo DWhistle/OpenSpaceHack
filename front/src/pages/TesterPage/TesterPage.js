@@ -31,11 +31,7 @@ const navItems = [
 
 const MyThreads = () => <div>Я MyThreads</div>
 
-const Rating = () => (
-    <div>
-        <Comments />
-    </div>
-)
+const Rating = () => <div>Тут будет рейтинг</div>
 
 const content = [<Threads />, <MyThreads />, <Rating />, <Shop />]
 
