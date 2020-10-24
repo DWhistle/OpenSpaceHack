@@ -17,7 +17,10 @@ public class UserAuthInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         Cookie[] cookies = request.getCookies();
-        Cookie userCookie = Arrays.stream(cookies).filter(c -> c.getName().equals("userId")).findFirst().orElse(null);
+        Cookie userCookie = null;
+        if (cookies != null){
+            userCookie = Arrays.stream(cookies).filter(c -> c.getName().equals("userId")).findFirst().orElse(null);
+        }
         if (userCookie == null) {
             response.getWriter().write("Unauthorized");
             response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
