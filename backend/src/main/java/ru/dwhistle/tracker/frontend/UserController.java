@@ -11,9 +11,11 @@ import ru.dwhistle.tracker.frontend.api.User;
 @Validated
 public class UserController {
     private final UserRepository userRepository;
+    private final UserContext userContext;
 
     @Autowired
-    public UserController(UserRepository userRepository) {
+    public UserController(UserContext userContext, UserRepository userRepository) {
+        this.userContext = userContext;
         this.userRepository = userRepository;
     }
 
@@ -29,7 +31,7 @@ public class UserController {
 
     @GetMapping("/{username}")
     public User getByUsername(@PathVariable("username") String username) {
-        UserEntity userEntity = userRepository.getByUsername(username);
+        UserEntity userEntity = null;
         if (userEntity == null) {
             throw new RuntimeException("User not found");
         }
