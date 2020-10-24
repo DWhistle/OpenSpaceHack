@@ -7,8 +7,10 @@ import org.springframework.web.context.annotation.RequestScope;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
-import ru.dwhistle.tracker.frontend.UserContext;
-import ru.dwhistle.tracker.frontend.util.UserInterceptor;
+import ru.dwhistle.tracker.frontend.util.UserContext;
+import ru.dwhistle.tracker.frontend.util.UserAuthInterceptor;
+import springfox.documentation.builders.PathSelectors;
+import springfox.documentation.builders.RequestHandlerSelectors;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
@@ -20,15 +22,23 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 public class AppConfig {
     @Bean
     public Docket getDocket() {
-        return new Docket(DocumentationType.SWAGGER_2);
+        return new Docket(DocumentationType.SWAGGER_2)
+                .select()
+                .apis(RequestHandlerSelectors.any())
+                .paths(PathSelectors.any())
+                .build();
     }
 
     @Bean
-    public WebMvcConfigurer webMvcConfigurer(UserInterceptor userInterceptor) {
+    public WebMvcConfigurer webMvcConfigurer(UserAuthInterceptor userAuthInterceptor) {
         return new WebMvcConfigurer() {
             @Override
             public void addInterceptors(InterceptorRegistry registry) {
-                registry.addInterceptor(userInterceptor);
+                registry.addInterceptor(userAuthInterceptor)
+                        .addPathPatterns("/**")
+                        .excludePathPatterns("auth/**",
+                        "/swagger-ui/**", "/configuration/**", "/swagger-resources/**",
+                        "/v2/api-docs", "/webjars/**");
             }
         };
     }

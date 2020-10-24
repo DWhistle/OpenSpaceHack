@@ -2,7 +2,6 @@ package ru.dwhistle.tracker.frontend.util;
 
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
-import ru.dwhistle.tracker.frontend.UserContext;
 
 import javax.annotation.Resource;
 import javax.servlet.http.Cookie;
@@ -11,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.util.Arrays;
 
 @Component
-public class UserInterceptor implements HandlerInterceptor {
+public class UserAuthInterceptor implements HandlerInterceptor {
     @Resource(name = "requestScopeUserData")
     private UserContext userContext;
 
