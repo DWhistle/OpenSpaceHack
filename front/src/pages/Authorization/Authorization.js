@@ -4,7 +4,7 @@ import { ReactComponent as Logo } from '../../assets/img/bankLogo.svg'
 import styles from './Authorization.module.less'
 import '../../App.less'
 
-const Authorization = () => {
+const Authorization = ({ setUser }) => {
     const [login, setLogin] = useState('')
     const [password, setPassword] = useState('')
 
@@ -14,6 +14,7 @@ const Authorization = () => {
 
     const handleSubmit = (event) => {
         event.preventDefault()
+        setUser(login)
     }
 
     return (
