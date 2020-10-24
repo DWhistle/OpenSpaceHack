@@ -47,7 +47,7 @@ const AdminPage = ({ setUser }) => {
     return (
         <div className={styles.container}>
             <NavBar selectedTab={selectedTab} setSelectedTab={setSelectedTab} navItems={navItems} />
-            <div style={{ display: 'block' }}>
+            <div className={styles.container__content}>
                 <div className={styles.topPanel} onClick={() => setUser('')}>
                     <Button text={'выпустите меня'} />
                 </div>
