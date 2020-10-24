@@ -6,6 +6,7 @@ import { ReactComponent as RatingIcon } from '../../assets/img/rating.svg'
 import { ReactComponent as ThreadsIcon } from '../../assets/img/threads.svg'
 import styles from './AdminPage.module.less'
 import Button from '../../components/Button/Button'
+import Comments from '../../components/Comments'
 
 const navItems = [
     {
@@ -32,7 +33,12 @@ const BugList = () => (
     </>
 )
 const Rating = () => <div>Я Rating</div>
-const Threads = () => <div>Я Threads</div>
+
+const Threads = () => (
+    <div>
+        <Comments />
+    </div>
+)
 const Chats = () => <div>Я Chats</div>
 
 const content = [<BugList />, <Rating />, <Threads />, <Chats />]
