@@ -1,11 +1,12 @@
 package ru.dwhistle.tracker.backend.db.beans;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity(name = "User")
 public class UserEntity {
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "Id", unique = true, nullable = false)
     private int id;
     @Column(name = "Username", unique = true, nullable = false, length = 100)
@@ -19,6 +20,18 @@ public class UserEntity {
     @Basic
     @Column(name = "RoleId", nullable = false)
     private int role;
+    @OneToMany(orphanRemoval = true,
+            cascade = CascadeType.ALL)
+    @JoinColumn(name = "device_id")
+    private List<DeviceEntity> devices;
+
+    public List<DeviceEntity> getDevices() {
+        return devices;
+    }
+
+    public void setDevices(List<DeviceEntity> devices) {
+        this.devices = devices;
+    }
 
     public String getName() {
         return name;
