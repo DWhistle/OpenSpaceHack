@@ -2,5 +2,6 @@
 Хакатон от Открытия
 ## Инструкция по запуску
 1. Установить docker-ce и docker-compose
-2. Собрать проект: ```./gradlew bootJar ```
-3. Выполнить: ```docker-compose up --build```
+2. Установить jdk>=8 и прописать JAVA_HOME
+3. Собрать проект: ```./gradlew bootJar ```
+4. Выполнить: ```docker-compose up --build```
