@@ -1,0 +1,36 @@
+.container {
+    width: 100%;
+    padding: 2vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #F3F7F9;
+}
+
+.item {
+    flex-basis: 32%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #B8C7D4;
+    border-radius: 8px;
+    padding: 1vw;
+    cursor: pointer;
+    &:hover {
+        border: 2px solid #02BAE8;
+    }
+    &__active {
+        cursor: pointer;
+        background: #FFFFFF;
+        flex-basis: 32%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 2px solid #B8C7D4;
+        border-radius: 8px;
+        padding: 1vw;
+        &:hover {
+            border: 2px solid #02BAE8;
+        }
+    }
+}

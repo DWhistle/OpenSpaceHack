@@ -8,6 +8,7 @@ import styles from './AdminPage.module.less'
 import Button from '../../components/Button/Button'
 import NavBar from '../../components/NavBar/NavBar'
 import Comments from '../../components/Comments'
+import BugList from '../BugList/BugList'
 
 const navItems = [
     {
@@ -28,11 +29,7 @@ const navItems = [
     },
 ]
 
-const BugList = () => (
-    <>
-        <div>Я баглист</div>
-    </>
-)
+
 const Rating = () => <div>Я Rating</div>
 
 const Threads = () => (
