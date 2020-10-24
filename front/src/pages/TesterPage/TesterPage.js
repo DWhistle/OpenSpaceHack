@@ -8,6 +8,7 @@ import { ReactComponent as ThreadsIcon } from '../../assets/img/threads.svg'
 import { ReactComponent as ChatsIcon } from '../../assets/img/chats.svg'
 import Comments from '../../components/Comments'
 import Shop from '../../components/Shop/Shop'
+import Threads from '../../components/Threads/Threads'
 
 const navItems = [
     {
@@ -28,19 +29,9 @@ const navItems = [
     },
 ]
 
-const Threads = () => (
-    <>
-        <div>Я Threads</div>
-    </>
-)
-
 const MyThreads = () => <div>Я MyThreads</div>
 
-const Rating = () => (
-    <div>
-        <Comments />
-    </div>
-)
+const Rating = () => <div>Тут будет рейтинг</div>
 
 const content = [<Threads />, <MyThreads />, <Rating />, <Shop />]
 

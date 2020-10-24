@@ -8,13 +8,8 @@
   resize: none;
 }
 
-.inputLine {
-  height: 14px;
-  background-color: #e0e0e0;
-  border: 1px solid #e5e5e5;
-}
-
 .commentForm {
   transition-property: opacity;
   transition-duration: 3s;
+    padding: 8px 0;
 }

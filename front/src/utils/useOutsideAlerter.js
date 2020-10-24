@@ -1,19 +1,19 @@
-import * as React from 'react';
-const { useEffect } = React;
+import * as React from 'react'
+const { useEffect } = React
 
 export const useOutsideAlerter = (ref, cb) => {
     const handleClickOutside = (event) => {
         if (ref.current && !ref.current.contains(event.target)) {
             setTimeout(() => {
-                cb();
-            }, 300);
+                cb()
+            }, 300)
         }
-    };
+    }
 
     useEffect(() => {
-        document.addEventListener('mousedown', handleClickOutside);
+        document.addEventListener('mousedown', handleClickOutside)
         return () => {
-            document.removeEventListener('mousedown', handleClickOutside);
-        };
-    });
-};
+            document.removeEventListener('mousedown', handleClickOutside)
+        }
+    })
+}

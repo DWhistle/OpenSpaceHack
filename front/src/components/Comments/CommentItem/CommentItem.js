@@ -1,9 +1,9 @@
 /* eslint-disable react/prop-types */
 import React, { useState } from 'react'
-import styles from './CommentItem.module.css'
+import styles from './CommentItem.module.less'
 import CommentHeader from '../CommentHeader'
 import CommentForm from '../CommentForm'
-import { ReactComponent as Dot } from '../../../imgs/dot.svg'
+import { ReactComponent as Dot } from '../../../assets/comments/dot.svg'
 
 const CommentItem = (props) => {
     const [isAnswer, setAnswer] = useState(false)
