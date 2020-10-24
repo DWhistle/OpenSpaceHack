@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
+import { Switch, Route } from 'react-router-dom';
 import styles from '../AdminPage/AdminPage.module.less'
 import NavBar from '../../components/NavBar/NavBar'
 import Button from '../../components/Button/Button'
@@ -9,41 +10,52 @@ import { ReactComponent as ChatsIcon } from '../../assets/img/chats.svg'
 import Shop from '../../components/Shop/Shop'
 import Threads from '../../components/Threads/Threads'
 import Rating from '../../components/Rating/Rating'
+import routes from '../../routes'
+import paths from '../../paths'
+import ProfileBar from '../../components/ProfileBar'
 
 const navItems = [
     {
+        path: paths.threads,
         title: 'Треды',
-        icon: <BugsIcon />,
-    },
-    {
-        title: 'Мои треды',
-        icon: <RatingIcon />,
-    },
-    {
-        title: 'Рейтинг тестировщиков',
         icon: <ThreadsIcon />,
     },
     {
+        path: paths.bugList,
+        title: 'Мои баги',
+        icon: <ThreadsIcon />,
+    },
+    {
+        path: paths.rating,
+        title: 'Рейтинг',
+        icon: <BugsIcon />,
+    },
+    {
+        path: paths.shop,
         title: 'Магазин',
         icon: <ChatsIcon />,
     },
 ]
 
-const MyThreads = () => <div>Я MyThreads</div>
-
-const content = [<Threads />, <MyThreads />, <Rating />, <Shop />]
-
-const TesterPage = ({ setUser }) => {
-    const [selectedTab, setSelectedTab] = useState(0)
+const TesterPage = ({ setUser, avatar, user, setUserDevices, userDevices }) => {
 
     return (
         <div className={styles.container}>
-            <NavBar selectedTab={selectedTab} setSelectedTab={setSelectedTab} navItems={navItems} />
+            <NavBar navItems={navItems} />
             <div className={styles.container__content}>
-                <div className={styles.topPanel} onClick={() => setUser('')}>
-                    <Button text={'выпустите меня'} />
-                </div>
-                {content[selectedTab.toString()]}
+                <ProfileBar avatar={avatar} setUser={setUser} />
+
+                <Switch>
+                    {Object.values(routes).map((route) => (
+                            <Route
+                                key={route.path}
+                                exact
+                                path={route.path}
+                                component={() => route.component({ user, avatar, userDevices, setUserDevices })}
+                            />
+                            ))}
+                </Switch>
+
             </div>
         </div>
     )
