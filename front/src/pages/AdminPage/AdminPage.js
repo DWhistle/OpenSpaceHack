@@ -29,7 +29,6 @@ const navItems = [
     },
 ]
 
-
 const Rating = () => <div>Я Rating</div>
 
 const Threads = () => (
