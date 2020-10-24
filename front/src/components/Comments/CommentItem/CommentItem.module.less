@@ -1,11 +1,12 @@
 .commentItem:hover {
-  border: 1px solid #a8d1a5;
+  border: 1px solid #02BAE8;
 }
 .commentItem {
   border: 1px solid transparent;
-  padding: 5px;
+  padding: 16px;
   min-width: 350px;
   width: 100%;
+
 }
 .commentItem:hover .header .controlButtons {
   display: inline;
@@ -19,7 +20,7 @@
   font-size: 13px;
   background-color: white;
   margin-left: 19px;
-  color: #138813;
+  color: #02BAE8;
   outline: none;
   border: none;
   cursor: pointer;
@@ -32,6 +33,9 @@
 }
 .wrapper{
   display: flex;
+    &:last-child {
+        margin-bottom: 36px;
+    }
 }
 .dotWrapper{
   display: flex;

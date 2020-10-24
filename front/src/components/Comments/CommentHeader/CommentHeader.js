@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import React from 'react'
 import { connect } from 'react-redux'
-import styles from '../CommentItem/CommentItem.module.css'
+import styles from '../CommentItem/CommentItem.module.less'
 import CommentInfo from '../CommentInfo'
 import { delComment } from '../../../redux/actions'
 import { currentTime } from '../../../helpers/currentTime'

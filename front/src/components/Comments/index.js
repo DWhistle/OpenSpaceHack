@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import CommentList from './CommentList'
 import CommentForm from './CommentForm'
 import Button from './Button'
-import plusImg from '../../imgs/plus.svg'
+import plusImg from '../../assets/comments/plus.svg'
 
 const Comments = () => {
     const [submit, setSubmit] = useState(false)
@@ -15,7 +15,7 @@ const Comments = () => {
             ) : (
                 <Button
                     type="button"
-                    text="Add comment"
+                    text="Добавить комментарий"
                     alt="add"
                     img={plusImg}
                     css="addButton"

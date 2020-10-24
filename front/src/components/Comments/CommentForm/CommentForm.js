@@ -5,8 +5,8 @@ import { addComment, editComment } from '../../../redux/actions'
 import styles from './CommentForm.module.css'
 import { currentTime } from '../../../helpers/currentTime'
 import { generateId } from '../../../helpers/generateId'
-import plusImg from '../../../imgs/plus.svg'
-import attachImg from '../../../imgs/attach.svg'
+import plusImg from '../../../assets/comments/plus.svg'
+import attachImg from '../../../assets/comments/attach.svg'
 import Button from '../Button'
 
 const CommentForm = (props) => {
@@ -47,15 +47,14 @@ const CommentForm = (props) => {
     return (
         <div className={styles.commentForm}>
             <form onSubmit={handleSubmit}>
-                <div className={styles.inputLine} />
                 <textarea
                     className={styles.formInput}
                     onChange={handleChange}
                     type="text"
-                    placeholder="Write something..."
+                    placeholder="Оставьте ваш комментарий..."
                     value={text}
                 />
-                <Button type="submit" text="Add comment" alt="add" img={plusImg} css={style} />
+                <Button type="submit" text="Добавить" alt="add" img={plusImg} css={style} />
                 <Button
                     type="button"
                     text="Прикрепить файл"

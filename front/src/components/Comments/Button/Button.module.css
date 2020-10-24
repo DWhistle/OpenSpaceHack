@@ -8,21 +8,27 @@
 .attachButton,
 .addButton,
 .addButton_inactive {
-  cursor: pointer;
-  width: 154px;
-  height: 32px;
-  outline: none;
-  border: none;
+    border-radius: 42px;
+    color: #FFFFFF;
+    cursor: pointer;
+    font-family: Graphik LC, sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: -0.04px;
+    padding: 8px 16px;
+    text-transform: uppercase;
 }
 .addButton {
   color: white;
-  background-color: #36ac3a;
+  background-color: #02BAE8;
 }
 .addButton:hover {
-  background-color: #158914;
+  background-color: #1BA9CC;
 }
 .addButton_inactive{
-  background-color: #E5E5E5;
+  background-color: #CEDCDF;
 }
 .attachButton {
   background-color: white;
