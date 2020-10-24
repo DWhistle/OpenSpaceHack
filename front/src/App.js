@@ -5,15 +5,15 @@ import AdminPage from './pages/AdminPage/AdminPage'
 import TesterPage from './pages/TesterPage/TesterPage'
 
 const App = () => {
-    const [user, setUser] = useState('')
-    // const [user, setUser] = useState('admin')
+    // const [user, setUser] = useState('')
+    const [user, setUser] = useState('tester')
 
     return !user ? (
         <Authorization setUser={setUser} />
     ) : user === 'admin' ? (
-        <AdminPage />
+        <AdminPage setUser={setUser} />
     ) : user === 'tester' ? (
-        <TesterPage />
+        <TesterPage setUser={setUser} />
     ) : (
         <div>А вас мы не знаем</div>
     )
