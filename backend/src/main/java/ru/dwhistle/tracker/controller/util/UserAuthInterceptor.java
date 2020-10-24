@@ -1,4 +1,4 @@
-package ru.dwhistle.tracker.frontend.util;
+package ru.dwhistle.tracker.controller.util;
 
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;

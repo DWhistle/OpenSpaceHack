@@ -5,6 +5,7 @@ import javax.persistence.*;
 @Entity(name = "User")
 public class UserEntity {
     @Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
     @Column(name = "Id", unique = true, nullable = false)
     private int id;
     @Column(name = "Username", unique = true, nullable = false, length = 100)
