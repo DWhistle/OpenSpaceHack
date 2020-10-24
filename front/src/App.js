@@ -11,9 +11,9 @@ const App = () => {
     return !user ? (
         <Authorization setUser={setUser} />
     ) : user === 'admin' ? (
-        <AdminPage />
+        <AdminPage setUser={setUser} />
     ) : user === 'tester' ? (
-        <TesterPage />
+        <TesterPage setUser={setUser} />
     ) : (
         <div>А вас мы не знаем</div>
     )

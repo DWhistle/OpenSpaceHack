@@ -5,6 +5,7 @@ import { ReactComponent as ChatsIcon } from '../../assets/img/chats.svg'
 import { ReactComponent as RatingIcon } from '../../assets/img/rating.svg'
 import { ReactComponent as ThreadsIcon } from '../../assets/img/threads.svg'
 import styles from './AdminPage.module.less'
+import Button from '../../components/Button/Button'
 
 const navItems = [
     {
@@ -25,7 +26,11 @@ const navItems = [
     },
 ]
 
-const BugList = () => <div>Я баглист</div>
+const BugList = () => (
+    <>
+        <div>Я баглист</div>
+    </>
+)
 const Rating = () => <div>Я Rating</div>
 const Threads = () => <div>Я Threads</div>
 const Chats = () => <div>Я Chats</div>
@@ -66,13 +71,18 @@ const NavBar = ({ selectedTab, setSelectedTab }) => {
     )
 }
 
-const AdminPage = () => {
+const AdminPage = ({ setUser }) => {
     const [selectedTab, setSelectedTab] = useState(0)
 
     return (
         <div className={styles.container}>
             <NavBar selectedTab={selectedTab} setSelectedTab={setSelectedTab} />
-            {content[selectedTab.toString()]}
+            <div style={{ display: 'block' }}>
+                <div className={styles.topPanel} onClick={() => setUser('')}>
+                    <Button text={'выпустите меня'} />
+                </div>
+                {content[selectedTab.toString()]}
+            </div>
         </div>
     )
 }
