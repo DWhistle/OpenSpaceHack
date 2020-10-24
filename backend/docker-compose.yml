@@ -1,0 +1,28 @@
+version: "3"
+
+services:
+
+  backend:
+    container_name: "backend"
+    image: bugtrackerapi:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "5005:5000"
+    depends_on:
+      - db
+    entrypoint: ["java", "-jar", "/opt/app/backend.jar"]
+
+  db:
+    container_name: "mysql5"
+    image: mysql:5.7
+    ports:
+      - "3306:3306"
+    environment:
+        MYSQL_DATABASE: 'master'
+        MYSQL_USER: 'dwhistle'
+        MYSQL_PASSWORD: 'dwhistle'
+        MYSQL_ROOT_PASSWORD: 'root'
+    restart: always
+
