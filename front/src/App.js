@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import './App.less'
 import Authorization from './pages/Authorization/Authorization'
 import AdminPage from './pages/AdminPage/AdminPage'
-import BugList from './pages/BugList/BugList'
+import TesterPage from './pages/TesterPage/TesterPage'
 
 const App = () => {
     // const [user, setUser] = useState('')
@@ -13,7 +13,7 @@ const App = () => {
     ) : user === 'admin' ? (
         <AdminPage setUser={setUser} />
     ) : user === 'tester' ? (
-        <BugList setUser={setUser} />
+        <TesterPage setUser={setUser} />
     ) : (
         <div>А вас мы не знаем</div>
     )
