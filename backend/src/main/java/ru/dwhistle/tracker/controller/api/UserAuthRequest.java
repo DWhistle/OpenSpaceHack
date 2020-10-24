@@ -1,8 +1,8 @@
-package ru.dwhistle.tracker.frontend.api;
+package ru.dwhistle.tracker.controller.api;
 
 import javax.validation.constraints.NotNull;
 
-public class UserAuth {
+public class UserAuthRequest {
     @NotNull
     public String username;
     @NotNull

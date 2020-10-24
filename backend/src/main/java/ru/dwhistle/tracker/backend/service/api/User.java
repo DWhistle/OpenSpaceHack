@@ -1,4 +1,4 @@
-package ru.dwhistle.tracker.frontend.api;
+package ru.dwhistle.tracker.backend.service.api;
 
 import ru.dwhistle.tracker.backend.db.beans.Role;
 
