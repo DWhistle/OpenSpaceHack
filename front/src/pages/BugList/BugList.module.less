@@ -20,6 +20,7 @@
 }
 
 .bug_card {
+    position: relative;
     @media screen and (max-width: 1440px) {
         flex-basis: 45%;
     }
@@ -92,6 +93,51 @@
         }
     }
     &__footer {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        &__controls {
+           display: flex;
+            flex: 1;
+            align-items: center;
+            justify-content: flex-end;
+            & > button:last-child {
+                margin-left: 1vw;
+            }
+        }
+    }
+}
 
+.addTag {
+    position: absolute;
+    flex-wrap: wrap;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    width: 100%;
+    z-index: 2;
+    background: #FFF;
+    padding: 24px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    border-radius: 8px;
+    &__header {
+
+    }
+    &__tags_container {
+        width: 100%;
+        display: flex;
+        align-items: flex-start;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+        margin: 2vw 0;
+    }
+    &__tag {
+        padding: 5px 15px;
+        color: #FFF;
+        border-radius: 43px;
+        margin: 0 5px 5px 0;
+        cursor: pointer;
     }
 }
