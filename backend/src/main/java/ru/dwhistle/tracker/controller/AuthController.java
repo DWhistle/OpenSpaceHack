@@ -16,6 +16,7 @@ import javax.validation.Valid;
 @RestController("auth")
 @RequestMapping(path = "/auth")
 @Validated
+@CrossOrigin(allowedHeaders = "*", origins = "*")
 public class AuthController {
     private final UserService userService;
 

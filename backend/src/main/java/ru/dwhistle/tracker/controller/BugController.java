@@ -22,6 +22,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 @RestController("/bug")
+@CrossOrigin(allowedHeaders = "*", origins = "*")
 public class BugController {
 
     private final BugRepository bugRepository;

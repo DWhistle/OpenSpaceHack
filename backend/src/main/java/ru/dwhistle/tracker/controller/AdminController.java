@@ -2,10 +2,7 @@ package ru.dwhistle.tracker.controller;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import ru.dwhistle.tracker.backend.db.beans.BugReportEntity;
 import ru.dwhistle.tracker.backend.db.repository.BugReportRepository;
 import ru.dwhistle.tracker.controller.api.RewardRequest;
@@ -15,6 +12,7 @@ import java.util.Optional;
 
 @RestController("admin")
 @RequestMapping("/admin")
+@CrossOrigin(allowedHeaders = "*", origins = "*")
 public class AdminController {
     private final BugReportRepository bugReportRepository;
 
