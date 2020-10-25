@@ -43,8 +43,7 @@ public class AppConfig {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("/**")
-                        .allowedOrigins("*")
-                        .allowedMethods("*");
+                        .allowedOrigins("http://localhost:3000");
             }
             @Override
             public void addInterceptors(InterceptorRegistry registry) {
