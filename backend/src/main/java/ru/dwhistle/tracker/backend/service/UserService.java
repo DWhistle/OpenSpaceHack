@@ -18,17 +18,6 @@ public class UserService {
         this.userRepository = userRepository;
     }
 
-    public User getCurrentUser() {
-        return userRepository.findById(userContext.id)
-                .map(UserService::entityUserToApi)
-                .orElseThrow();
-    }
-
-    public UserEntity getCurrentUserEntity() {
-        return userRepository.findById(userContext.id)
-                .orElseThrow();
-    }
-
     public static User entityUserToApi(UserEntity userEntity) {
         return new User(userEntity.getId(),
                 userEntity.getName(),
@@ -37,9 +26,20 @@ public class UserService {
                 userEntity.getRoleEnum());
     }
 
+    public User getCurrentUser() {
+        return userRepository.findById(userContext.id)
+                .map(UserService::entityUserToApi)
+                .orElseThrow();
+    }
+
+    public UserEntity getCurrentUserEntity() {
+        return userRepository.findById(userContext.id)
+                .orElse(null);
+    }
+
     public User getByUsername(String userName) {
         UserEntity userEntity = userRepository.getByUsername(userName);
-        if (userEntity == null){
+        if (userEntity == null) {
             return null;
         }
         return entityUserToApi(userEntity);
@@ -56,5 +56,9 @@ public class UserService {
             return true;
         }
         return false;
+    }
+
+    public void updateUser(UserEntity userEntity) {
+        userRepository.save(userEntity);
     }
 }

@@ -16,9 +16,9 @@ public class BugReportEntity {
     private BugStatus statusEnum;
     @Transient
     private BugReportSource sourceEnum;
-    @Column(name = "status", nullable = false)
+    @Basic
     private int status;
-    @Column(name = "source", nullable = false)
+    @Basic
     private int source;
     @OneToOne(cascade = CascadeType.REMOVE)
     @JoinColumn(name = "bug_id")

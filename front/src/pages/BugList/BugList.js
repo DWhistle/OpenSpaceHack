@@ -109,7 +109,7 @@ const BugCard = ({ bug, allTags }) => {
             </div>
 
             <div className={styles.bug_card__footer}>
-                <img src={getRandomAvatar()} alt="user avatar" />
+                <img src={getRandomAvatar()} height={32} alt="user avatar" />
                 <div className={styles.bug_card__footer__controls}>
                     <Button text="Повтор" />
                     <Button text="В работу" />
@@ -209,12 +209,12 @@ const BugList = () => {
                 {
                     name: 'переводы',
                     color: '#FF7F00',
-                    id: 0,
+                    id: 1,
                 },
                 {
                     name: 'переводы',
                     color: '#FF7F00',
-                    id: 0,
+                    id: 2,
                 },
             ],
             author: {

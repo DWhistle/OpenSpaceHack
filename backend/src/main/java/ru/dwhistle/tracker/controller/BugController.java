@@ -22,6 +22,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 @RestController("/bug")
+@CrossOrigin
 public class BugController {
 
     private final BugRepository bugRepository;
@@ -60,6 +61,13 @@ public class BugController {
                 new ArrayList<>()));
         return new ResponseEntity<>(HttpStatus.OK);
     }
+
+    @GetMapping("/reports/my")
+    public ResponseEntity<List<Bug>> getMyReports(@PathVariable("page") int page) {
+        List<BugEntity> entities = bugRepository.findAllByBugCreator(userService.getCurrentUserEntity());
+        return ResponseEntity.ok(entities.stream().map(this::entityToBug).collect(Collectors.toList()));
+    }
+
 
     @GetMapping("/report/{id}/messages")
     public ResponseEntity<List<ReportMessage>> getReportMessages(@PathVariable("id") int reportId) {
@@ -107,5 +115,17 @@ public class BugController {
         } else {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
+    }
+
+    private Bug entityToBug(BugEntity bugEntity) {
+        return new Bug(bugEntity.getId(),
+                bugEntity.getName(),
+                bugEntity.getOs(),
+                bugEntity.getOsVersion(),
+                bugEntity.getAppVersion(),
+                bugEntity.getStepsToReproduce(),
+                bugEntity.getScreenshotUrl(),
+                bugEntity.getCreationTime(),
+                UserService.entityUserToApi(bugEntity.getBugCreator()));
     }
 }
