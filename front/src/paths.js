@@ -1,6 +1,7 @@
 export default {
     index: '/',
     login: '/login',
+    registration: '/registration',
     shop: '/shop',
     profile: '/profile',
     bugList: '/buglist',

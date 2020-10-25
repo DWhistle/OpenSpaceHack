@@ -1,0 +1,50 @@
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(34, 39, 44, 0.5);
+}
+
+.container {
+    border-radius: 8px;
+    width: 585px;
+    background: white;
+    height: 90%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    outline: none;
+    flex-direction: column;
+}
+
+.header {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-basis: 5%;
+    padding: 0 1vw;
+    &__text {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+    }
+}
+
+.body {
+    flex-basis: 90%;
+    width: 100%;
+    padding: 0 1vw;
+    overflow: scroll;
+}
+
+.footer {
+    flex-basis: 5%;
+    padding: 1vw;
+}
