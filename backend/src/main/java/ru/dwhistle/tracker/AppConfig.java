@@ -4,6 +4,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.util.AntPathMatcher;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.context.annotation.RequestScope;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
@@ -23,6 +24,7 @@ import java.util.function.Predicate;
 @EnableJpaRepositories("ru.dwhistle.tracker.backend.db")
 @EnableSwagger2
 @EnableWebMvc
+@CrossOrigin("*")
 public class AppConfig {
     @Bean
     public Docket getDocket() {
