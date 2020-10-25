@@ -3,7 +3,7 @@ import Button from '../../components/Button/Button'
 import { ReactComponent as Logo } from '../../assets/img/bankLogo.svg'
 import styles from './Authorization.module.less'
 import '../../App.less'
-import paths from '../../paths';
+import paths from '../../paths'
 
 const Authorization = ({ setUser }) => {
     const [login, setLogin] = useState('')
@@ -14,10 +14,10 @@ const Authorization = ({ setUser }) => {
     }
 
     const handleSubmit = (event) => {
-        event.preventDefault();
-        localStorage.setItem('role', login);
-        setUser(login);
-        window.location = paths.index;
+        event.preventDefault()
+        localStorage.setItem('role', login)
+        setUser(login)
+        window.location = paths.index
     }
 
     return (
@@ -48,6 +48,14 @@ const Authorization = ({ setUser }) => {
                     <div className={styles.button}>
                         <Button disabled={!validateForm()} type={'submit'} text={'Войти'} />
                     </div>
+                    <p className="text-xs" style={{ height: 'auto', padding: '0 16px' }}>
+                        Вы можете войти в систему под учетной записью <strong>admin</strong> с любым
+                        паролем, чтобы увидеть панель управления администратора.
+                    </p>
+                    <p className="text-xs" style={{ padding: '0 16px' }}>
+                        Либо под учетной записью <strong>tester</strong> для работы с интерфейсом
+                        бета-тестировщика.
+                    </p>
                 </form>
             </div>
         </div>

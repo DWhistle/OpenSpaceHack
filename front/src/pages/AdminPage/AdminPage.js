@@ -16,25 +16,24 @@ const navItems = [
     {
         title: 'Список багов',
         icon: <BugsIcon />,
-        path: paths.bugList
+        path: paths.bugList,
     },
     {
         title: 'Треды',
         icon: <ThreadsIcon />,
-        path: paths.threads
+        path: paths.threads,
     },
     {
         title: 'Рейтинг',
         icon: <RatingIcon />,
-        path: paths.rating
+        path: paths.rating,
     },
     {
         title: 'Чаты',
         icon: <ChatsIcon />,
-        path: paths.chats
+        path: paths.chats,
     },
 ]
-
 
 const AdminPage = ({ setUser, avatar, user, setUserDevices, userDevices }) => {
     return (
@@ -43,17 +42,18 @@ const AdminPage = ({ setUser, avatar, user, setUserDevices, userDevices }) => {
             <div className={styles.container__content}>
                 <ProfileBar setUser={setUser} avatar={avatar} />
                 <Router history={history}>
-                <Switch>
-                    {Object.values(routes)
-                        .map((route) => (
+                    <Switch>
+                        {Object.values(routes).map((route) => (
                             <Route
                                 key={route.path}
                                 exact
                                 path={route.path}
-                                component={() => route.component({ avatar, user, userDevices, setUserDevices })}
+                                component={() =>
+                                    route.component({ avatar, user, userDevices, setUserDevices })
+                                }
                             />
-                    ))}
-                </Switch>
+                        ))}
+                    </Switch>
                 </Router>
             </div>
         </div>

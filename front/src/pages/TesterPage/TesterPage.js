@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Switch, Route } from 'react-router-dom';
+import React, { useState } from 'react'
+import { Switch, Route } from 'react-router-dom'
 import styles from '../AdminPage/AdminPage.module.less'
 import NavBar from '../../components/NavBar/NavBar'
 import Button from '../../components/Button/Button'
@@ -35,7 +35,6 @@ const navItems = [
 ]
 
 const TesterPage = ({ setUser, avatar, user, setUserDevices, userDevices }) => {
-
     return (
         <div className={styles.container}>
             <NavBar navItems={navItems} />
@@ -44,15 +43,16 @@ const TesterPage = ({ setUser, avatar, user, setUserDevices, userDevices }) => {
 
                 <Switch>
                     {Object.values(routes).map((route) => (
-                            <Route
-                                key={route.path}
-                                exact
-                                path={route.path}
-                                component={() => route.component({ user, avatar, userDevices, setUserDevices })}
-                            />
-                            ))}
+                        <Route
+                            key={route.path}
+                            exact
+                            path={route.path}
+                            component={() =>
+                                route.component({ user, avatar, userDevices, setUserDevices })
+                            }
+                        />
+                    ))}
                 </Switch>
-
             </div>
         </div>
     )

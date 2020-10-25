@@ -10,5 +10,4 @@ export default {
     threadsItem: '/threads/:id',
     chats: '/chats',
     chatsItem: '/chats/:id',
-
 }
