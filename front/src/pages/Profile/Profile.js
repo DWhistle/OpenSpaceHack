@@ -8,16 +8,7 @@ import platform from 'platform';
 import MyModal from '../../components/Modal'
 
 const NewDeviceModal = ({ isOpen, setOpen }) => {
-    const currDevice = {
-        os: {
-            family: platform.os.family,
-            version: platform.os.version,
-        },
-        browser: {
-            name: platform.name,
-            version: platform.version
-        }
-    };
+
     const [os, setOs] = useState(platform.os.family);
     const [osVersion, setOsVersion] = useState(platform.os.version);
     const [environment, setEnvironment] = useState(platform.name);
@@ -129,15 +120,16 @@ const Profile = ({ avatar, user, userDevices, setUserDevices }) => {
                     <h3 className={styles.device__header}>Мои девайсы</h3>
                     {userDevices.map((device) => (
                         <div className={styles.device} key={device.id}>
+                    {console.log(device)}
                             <span className={styles.device__text}>
-                                OS: {device.os.family} {device.os.version}
+                                OS: {device.os} {device.osVersion}
                             </span>
                             <span className={styles.device__text}>
-                                Браузер: {device.browser.name} {device.browser.version}
+                                Браузер: {device.environment} {device.environmentVersion}
                             </span>
                         </div>
                     ))}
-                    <NewDeviceModal isOpen={isOpen} setOpen={setOpen()}/>
+                    <NewDeviceModal isOpen={isOpen} setOpen={setOpen}/>
                     <span onClick={() => setOpen(true)} className={styles.device__add}><img src={plusIcon} alt="addIcon" />Добавить новое устройство</span>
                 </div>
             </div>
