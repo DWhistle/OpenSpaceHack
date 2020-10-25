@@ -27,12 +27,12 @@ export const NavItem = ({ icon, text, route }) => {
     )
 }
 
-const ReportModal = ({ isOpen, setOpen}) => {
+const ReportModal = ({ isOpen, setOpen, userDevises }) => {
     const [name, setBugName] = useState('');
-    const [os, setOs] = useState('');
-    const [osVersion, setOsVersion] = useState('');
-    const [browser, setBrowser] = useState('');
-    const [browserVersion, setBrowserVersion] = useState('');
+    const [os, setOs] = useState(userDevises[0].os);
+    const [osVersion, setOsVersion] = useState(userDevises[0].osVersion);
+    const [browser, setBrowser] = useState(userDevises[0].environment);
+    const [browserVersion, setBrowserVersion] = useState(userDevises[0].environmentVersion);
     const [stepsToReproduce, setStepsToReproduce] = useState('');
     const [addTagIsOpen, setAddTagIsOpen] = useState(false);
     const [currentTags, setCurrentTags] = useState([]);
@@ -224,13 +224,13 @@ const ReportModal = ({ isOpen, setOpen}) => {
     </MyModal>)
 };
 
-const NavBar = ({   navItems }) => {
+const NavBar = ({ navItems, userDevices }) => {
     const [modalOpen, setModalOpen] = useState(false);
     return (
         <div className={styles.navigation}>
             <div className={styles.logo}>
                 <BTSLogo />
-                <ReportModal isOpen={modalOpen} setOpen={setModalOpen} />
+                <ReportModal isOpen={modalOpen} setOpen={setModalOpen} userDevises={userDevices} />
             </div>
             <ul>
                 {navItems.map((item) => (

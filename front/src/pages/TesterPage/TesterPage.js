@@ -36,7 +36,7 @@ const navItems = [
 const TesterPage = ({ setUser, avatar, user, setUserDevices, userDevices }) => {
     return (
         <div className={styles.container}>
-            <NavBar navItems={navItems} />
+            <NavBar navItems={navItems} userDevices={userDevices} />
             <div className={styles.container__content}>
                 <ProfileBar avatar={avatar} setUser={setUser} />
 
