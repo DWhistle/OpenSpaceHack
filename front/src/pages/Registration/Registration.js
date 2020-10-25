@@ -4,6 +4,7 @@ import { ReactComponent as Logo } from '../../assets/img/bankLogo.svg'
 import Button from '../../components/Button/Button'
 import authService from '../../services/authService'
 import paths from '../../paths'
+import { Link } from 'react-router-dom'
 
 const Registration = ({ setUser }) => {
     const [login, setLogin] = useState('');
@@ -76,6 +77,7 @@ const Registration = ({ setUser }) => {
                     <div className={styles.button}>
                         <Button disabled={!validateForm()} type={'submit'} text={'Регистрация'} />
                     </div>
+                    <Link to={paths.login}>Вход</Link>
                 </form>
             </div>
         </div>)

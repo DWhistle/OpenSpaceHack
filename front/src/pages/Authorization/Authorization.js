@@ -6,6 +6,7 @@ import '../../App.less'
 import paths from '../../paths';
 import authService from '../../services/authService'
 import cookieManager from '../../utils/cookieManager'
+import { Link } from 'react-router-dom'
 
 const Authorization = ({ setUser }) => {
     const [login, setLogin] = useState('')
@@ -58,14 +59,7 @@ const Authorization = ({ setUser }) => {
                     <div className={styles.button}>
                         <Button disabled={!validateForm()} type={'submit'} text={'Войти'} />
                     </div>
-                    <p className="text-xs" style={{ height: 'auto', padding: '0 16px' }}>
-                        Вы можете войти в систему под учетной записью <strong>admin</strong> с любым
-                        паролем, чтобы увидеть панель управления администратора.
-                    </p>
-                    <p className="text-xs" style={{ padding: '0 16px' }}>
-                        Либо под учетной записью <strong>tester</strong> для работы с интерфейсом
-                        бета-тестировщика.
-                    </p>
+                    <Link to={paths.registration}>Регистрация</Link>
                 </form>
             </div>
         </div>
