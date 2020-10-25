@@ -2,6 +2,7 @@ package ru.dwhistle.tracker.controller.util;
 
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.Resource;
 import javax.servlet.http.Cookie;
@@ -18,7 +19,7 @@ public class UserAuthInterceptor implements HandlerInterceptor {
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         Cookie[] cookies = request.getCookies();
         Cookie userCookie = null;
-        if (cookies != null){
+        if (cookies != null) {
             userCookie = Arrays.stream(cookies).filter(c -> c.getName().equals("userId")).findFirst().orElse(null);
         }
         if (userCookie == null) {
@@ -34,5 +35,13 @@ public class UserAuthInterceptor implements HandlerInterceptor {
             return false;
         }
         return true;
+    }
+
+    @Override
+    public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
+        response.setHeader("Access-Control-Allow-Origin", "*");
+        response.setHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS, DELETE");
+        response.setHeader("Access-Control-Max-Age", "3600");
+        response.setHeader("Access-Control-Allow-Headers", "x-requested-with");
     }
 }
