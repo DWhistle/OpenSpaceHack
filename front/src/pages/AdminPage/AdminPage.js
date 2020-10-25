@@ -9,6 +9,8 @@ import Button from '../../components/Button/Button'
 import NavBar from '../../components/NavBar/NavBar'
 import Comments from '../../components/Comments'
 import BugList from '../BugList/BugList'
+import Rating from '../../components/Rating/Rating'
+import Threads from '../../components/Threads/Threads'
 
 const navItems = [
     {
@@ -29,13 +31,6 @@ const navItems = [
     },
 ]
 
-const Rating = () => <div>Я Rating</div>
-
-const Threads = () => (
-    <div>
-        <Comments />
-    </div>
-)
 const Chats = () => <div>Я Chats</div>
 
 const content = [<BugList />, <Rating />, <Threads />, <Chats />]
@@ -48,7 +43,7 @@ const AdminPage = ({ setUser }) => {
             <NavBar selectedTab={selectedTab} setSelectedTab={setSelectedTab} navItems={navItems} />
             <div className={styles.container__content}>
                 <div className={styles.topPanel} onClick={() => setUser('')}>
-                    <Button text={'выпустите меня'} />
+                    <Button text={'Выйти'} />
                 </div>
                 {content[selectedTab.toString()]}
             </div>

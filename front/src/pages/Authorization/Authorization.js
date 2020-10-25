@@ -45,6 +45,14 @@ const Authorization = ({ setUser }) => {
                     <div className={styles.button}>
                         <Button disabled={!validateForm()} type={'submit'} text={'Войти'} />
                     </div>
+                    <p className="text-xs" style={{ height: 'auto', padding: '0 16px' }}>
+                        Вы можете войти в систему под учетной записью <strong>admin</strong> с любым
+                        паролем, чтобы увидеть панель управления администратора.
+                    </p>
+                    <p className="text-xs" style={{ padding: '0 16px' }}>
+                        Либо под учетной записью <strong>tester</strong> для работы с интерфейсом
+                        бета-тестировщика.
+                    </p>
                 </form>
             </div>
         </div>

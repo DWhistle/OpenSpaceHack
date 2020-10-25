@@ -41,7 +41,7 @@ const TesterPage = ({ setUser }) => {
             <NavBar selectedTab={selectedTab} setSelectedTab={setSelectedTab} navItems={navItems} />
             <div className={styles.container__content}>
                 <div className={styles.topPanel} onClick={() => setUser('')}>
-                    <Button text={'выпустите меня'} />
+                    <Button text={'Выйти'} />
                 </div>
                 {content[selectedTab.toString()]}
             </div>
