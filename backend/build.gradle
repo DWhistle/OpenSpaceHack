@@ -27,6 +27,7 @@ bootJar {
 }
 
 dependencies {
+    implementation "com.google.guava:guava:30.0-jre"
     implementation "org.springframework.boot:spring-boot-starter-web:2.3.0.RELEASE"
     implementation "org.springframework.boot:spring-boot-starter-data-jpa:2.3.0.RELEASE"
     implementation "org.hibernate:hibernate-validator:6.1.0.Final"
