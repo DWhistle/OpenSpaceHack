@@ -24,6 +24,7 @@ import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.function.Predicate;
 
 @Configuration
@@ -42,24 +43,11 @@ public class AppConfig {
                 .build();
     }
 
-//    @Bean
-//    public CorsConfiguration corsConfiguration() {
-//        CorsConfiguration corsConfiguration = new CorsConfiguration();
-//        corsConfiguration.addAllowedOrigin("*");
-//        corsConfiguration.addAllowedMethod("POST");
-//        corsConfiguration.addAllowedMethod("GET");
-//        corsConfiguration.addAllowedMethod("PUT");
-//        corsConfiguration.addAllowedMethod("OPTIONS");
-//        corsConfiguration.addAllowedMethod("DELETE");
-//        corsConfiguration.addAllowedHeader("*");
-//        return corsConfiguration;
-//    }
-
     @Bean
     public CorsFilter corsFilter() {
         final UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         final CorsConfiguration config = new CorsConfiguration();
-        config.addAllowedOrigin("*");
+        config.setAllowedOrigins(Collections.singletonList("*")); 
         config.setAllowedHeaders(Arrays.asList("Origin", "Content-Type", "Accept"));
         config.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "OPTIONS", "DELETE", "PATCH"));
         config.setAllowCredentials(true);
