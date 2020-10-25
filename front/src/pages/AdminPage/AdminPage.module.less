@@ -15,7 +15,16 @@
         height: 100%;
         width: 15%;
         min-width: 220px;
-        //position: fixed;
+        &__additional {
+            width: 100%;
+            align-items: center;
+            justify-content: center;
+            display: flex;
+            & > button {
+                width: 100%;
+                margin: 1vw;
+            }
+        }
     }
 
     .logo {
@@ -64,5 +73,60 @@
         padding: 2vw;
     }
 
+}
+
+.report_modal {
+    &__form_item {
+        display: flex;
+        align-items: flex-start;
+        justify-content: flex-start;
+        flex-direction: column;
+        width: 100%;
+        margin-bottom: 1vw;
+    }
+    &__title {
+        color: #8293A3;
+        font-size: 18px;
+        margin-bottom: 0.5vw;
+    }
+}
+
+.input {
+    background-color: #F3F7F9;
+    border-radius: 4px;
+    border: none;
+    color:#8293A3;
+    font-size: 22px;
+    padding: 10px;
+    width: 100%;
+    &:focus {
+        background-color: #E3F6FF;
+    }
+}
+
+.tags {
+    &__add {
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 5px 15px;
+        color: #02BAE8;
+        font-size: 14px;
+        border-radius: 43px;
+        margin: 0 5px 5px 0;
+        background: rgba(#02BAE8, 20%);
+    }
+    &__item {
+        padding: 5px 15px;
+        color: #FFF;
+        border-radius: 43px;
+        margin: 0 5px 5px 0;
+    }
+    flex: 1;
+    flex-wrap: wrap;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
 }
 
