@@ -2,16 +2,11 @@ import React from 'react'
 import paths from './paths';
 import { Redirect } from 'react-router-dom';
 import BugList from './pages/BugList/BugList';
-import Comments from './components/Comments'
 import Shop from './components/Shop/Shop'
 import Profile from './pages/Profile'
-const Rating = () => <div>Я Rating</div>
+import Rating from './components/Rating/Rating'
+import Threads from './components/Threads/Threads'
 
-const Threads = () => (
-    <div>
-        <Comments />
-    </div>
-)
 const Chats = () => <div>Я Chats</div>;
 
 const getRole = () => {
