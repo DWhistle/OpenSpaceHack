@@ -3,7 +3,10 @@ import Button from '../../components/Button/Button'
 import { ReactComponent as Logo } from '../../assets/img/bankLogo.svg'
 import styles from './Authorization.module.less'
 import '../../App.less'
-import paths from '../../paths'
+import paths from '../../paths';
+import authService from '../../services/authService'
+import cookieManager from '../../utils/cookieManager'
+import { Link } from 'react-router-dom'
 
 const Authorization = ({ setUser }) => {
     const [login, setLogin] = useState('')
@@ -13,11 +16,19 @@ const Authorization = ({ setUser }) => {
         return login.length > 0 && password.length > 0
     }
 
-    const handleSubmit = (event) => {
-        event.preventDefault()
-        localStorage.setItem('role', login)
-        setUser(login)
-        window.location = paths.index
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+        const res = await authService.login({
+            username: login,
+            password,
+        });
+        cookieManager.setCookie('userId', res.id);
+        cookieManager.setCookie('userID', res.id);
+        localStorage.setItem('role', res.roleEnum.toLowerCase());
+        localStorage.setItem('userId', res.id);
+        localStorage.setItem('name', res.name);
+        setUser(res.roleEnum.toLowerCase());
+        window.location = paths.index;
     }
 
     return (
@@ -48,14 +59,7 @@ const Authorization = ({ setUser }) => {
                     <div className={styles.button}>
                         <Button disabled={!validateForm()} type={'submit'} text={'Войти'} />
                     </div>
-                    <p className="text-xs" style={{ height: 'auto', padding: '0 16px' }}>
-                        Вы можете войти в систему под учетной записью <strong>admin</strong> с любым
-                        паролем, чтобы увидеть панель управления администратора.
-                    </p>
-                    <p className="text-xs" style={{ padding: '0 16px' }}>
-                        Либо под учетной записью <strong>tester</strong> для работы с интерфейсом
-                        бета-тестировщика.
-                    </p>
+                    <Link to={paths.registration}>Регистрация</Link>
                 </form>
             </div>
         </div>

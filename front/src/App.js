@@ -7,6 +7,8 @@ import paths from './paths'
 import Main from './routing/Main'
 import history from './history'
 import { getRandomAvatar } from './utils/getRandomAvatar'
+import Registration from './pages/Registration'
+import deviceService from './services/deviceService'
 import platform from 'platform'
 
 const App = () => {
@@ -24,33 +26,47 @@ const App = () => {
             },
         },
     ])
+
     useEffect(() => {
-        setAvatar(getRandomAvatar())
-    }, [])
+        setAvatar(getRandomAvatar());
+    }, []);
+    useEffect(() => {
+        if (user) {
+            deviceService.getUserDevices()
+                .then(res => {
+                    console.log(res);
+                    setUserDevices(res);
+                })
+        }
+    }, []);
     return (
-        <Router history={history}>
-            <Switch>
-                <Route
-                    exact
-                    path={paths.login}
-                    component={() => <Authorization setUser={setUser} />}
-                />
-                <PrivateRoute
-                    path={paths.index}
-                    component={(prop) => (
-                        <Main
-                            {...prop}
-                            userDevices={userDevices}
-                            setUserDevices={setUserDevices}
-                            avatar={avatar}
-                            user={user}
-                            setUser={setUser}
-                        />
-                    )}
-                    isLoggedIn={!!user}
-                />
-            </Switch>
-        </Router>
+            <Router history={history}>
+                <Switch>
+                    <Route
+                        exact
+                        path={paths.login}
+                        component={() => (<Authorization setUser={setUser}/>)}
+                    />
+                    <Route
+                        exact
+                        path={paths.registration}
+                        component={() => (<Registration setUser={setUser}/>)}
+                    />
+                    <PrivateRoute
+                        path={paths.index}
+                        component={(prop) => (
+                            <Main
+                                {...prop}
+                                userDevices={userDevices}
+                                setUserDevices={setUserDevices}
+                                avatar={avatar}
+                                user={user}
+                                setUser={setUser}
+                            />)}
+                        isLoggedIn={!!user}
+                    />
+                </Switch>
+            </Router>
     )
 }
 

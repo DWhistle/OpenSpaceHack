@@ -6,55 +6,9 @@ import attachIcon from '../../icons/attachment.svg'
 import { useOutsideAlerter } from '../../utils/useOutsideAlerter'
 import Button from '../../components/Button/Button'
 import { getRandomAvatar } from '../../utils/getRandomAvatar'
+import AddTags from '../../components/AddTags'
 
-const AddTags = ({ setTags, tags, allTags, setOpen }) => {
-    const [currentTags, setCurrentTags] = useState(tags)
-    const handleTags = (tag) => {
-        if (currentTags.some((item) => item.id === tag.id)) {
-            setCurrentTags(currentTags.filter((item) => item.id !== tag.id))
-        } else {
-            setCurrentTags(currentTags.concat(tag))
-        }
-    }
 
-    return (
-        <div className={styles.addTag}>
-            <h1 className={styles.addTag__header}>Теги</h1>
-            <div className={styles.addTag__tags_container}>
-                {allTags.map((item) => (
-                    <div
-                        onClick={() => handleTags(item)}
-                        key={item.id}
-                        className={styles.addTag__tag}
-                        style={{
-                            border: `2px solid ${item.color}`,
-                            backgroundColor: currentTags.some((el) => el.id === item.id)
-                                ? item.color
-                                : '#FFF',
-                        }}
-                    >
-                        <span
-                            style={{
-                                color: currentTags.some((el) => el.id === item.id)
-                                    ? '#FFF'
-                                    : item.color,
-                            }}
-                        >
-                            {item.name}
-                        </span>
-                    </div>
-                ))}
-            </div>
-            <Button
-                onClick={() => {
-                    setTags(currentTags)
-                    setOpen(false)
-                }}
-                text="Сохранить"
-            />
-        </div>
-    )
-}
 
 const BugCard = ({ bug, allTags }) => {
     const [addTagIsOpen, setAddTagIsOpen] = useState(false)
@@ -146,7 +100,7 @@ const BugList = () => {
             color: '#535E6E',
             id: 4,
         },
-    ]
+    ];
     const tabs = [
         {
             id: 0,
