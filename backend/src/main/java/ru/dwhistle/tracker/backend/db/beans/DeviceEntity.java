@@ -8,7 +8,7 @@ public class DeviceEntity {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "Id", nullable = false, unique = true)
     private int id;
-    @Column(name = "Name", unique = true, nullable = false)
+    @Column(name = "Name", unique = false, nullable = false)
     private String name;
     @Column(name = "OS")
     private String os;
