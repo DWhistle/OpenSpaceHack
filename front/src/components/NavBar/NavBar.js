@@ -29,10 +29,10 @@ export const NavItem = ({ icon, text, route }) => {
 
 const ReportModal = ({ isOpen, setOpen, userDevises }) => {
     const [name, setBugName] = useState('');
-    const [os, setOs] = useState(userDevises[0].os);
-    const [osVersion, setOsVersion] = useState(userDevises[0].osVersion);
-    const [browser, setBrowser] = useState(userDevises[0].environment);
-    const [browserVersion, setBrowserVersion] = useState(userDevises[0].environmentVersion);
+    const [os, setOs] = useState(userDevises && userDevises.length > 0 ?userDevises[0].os : '');
+    const [osVersion, setOsVersion] = useState(userDevises && userDevises.length > 0 ?userDevises[0].osVersion : '');
+    const [browser, setBrowser] = useState(userDevises && userDevises.length > 0 ?userDevises[0].environment : '');
+    const [browserVersion, setBrowserVersion] = useState(userDevises && userDevises.length > 0 ?userDevises[0].environmentVersion : '');
     const [stepsToReproduce, setStepsToReproduce] = useState('');
     const [addTagIsOpen, setAddTagIsOpen] = useState(false);
     const [currentTags, setCurrentTags] = useState([]);
