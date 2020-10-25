@@ -1,12 +1,12 @@
 package ru.dwhistle.tracker;
 
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.PriorityOrdered;
 import org.springframework.core.annotation.Order;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.util.AntPathMatcher;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.context.annotation.RequestScope;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
@@ -26,6 +26,9 @@ import java.util.function.Predicate;
 @EnableJpaRepositories("ru.dwhistle.tracker.backend.db")
 @EnableSwagger2
 @EnableWebMvc
+@EnableAutoConfiguration(exclude = {org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration.class,
+        org.springframework.boot.autoconfigure.security.servlet.SecurityFilterAutoConfiguration.class,
+        org.springframework.boot.autoconfigure.security.servlet.WebSecurityEnablerConfiguration.class})
 public class AppConfig {
     @Bean
     public Docket getDocket() {
@@ -43,8 +46,9 @@ public class AppConfig {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("/**")
-                        .allowedOrigins("http://localhost:3000");
+                        .allowedOrigins("*");
             }
+
             @Override
             public void addInterceptors(InterceptorRegistry registry) {
                 registry.addInterceptor(userAuthInterceptor)
