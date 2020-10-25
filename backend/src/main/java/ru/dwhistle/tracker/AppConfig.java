@@ -27,8 +27,7 @@ import java.util.function.Predicate;
 @EnableSwagger2
 @EnableWebMvc
 @EnableAutoConfiguration(exclude = {org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration.class,
-        org.springframework.boot.autoconfigure.security.servlet.SecurityFilterAutoConfiguration.class,
-        org.springframework.boot.autoconfigure.security.servlet.WebSecurityEnablerConfiguration.class})
+        org.springframework.boot.autoconfigure.security.servlet.SecurityFilterAutoConfiguration.class})
 public class AppConfig {
     @Bean
     public Docket getDocket() {
