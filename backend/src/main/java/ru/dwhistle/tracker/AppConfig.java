@@ -2,6 +2,8 @@ package ru.dwhistle.tracker;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.PriorityOrdered;
+import org.springframework.core.annotation.Order;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.util.AntPathMatcher;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -24,7 +26,6 @@ import java.util.function.Predicate;
 @EnableJpaRepositories("ru.dwhistle.tracker.backend.db")
 @EnableSwagger2
 @EnableWebMvc
-@CrossOrigin("*")
 public class AppConfig {
     @Bean
     public Docket getDocket() {
@@ -36,11 +37,14 @@ public class AppConfig {
     }
 
     @Bean
+    @Order(PriorityOrdered.HIGHEST_PRECEDENCE)
     public WebMvcConfigurer webMvcConfigurer(UserAuthInterceptor userAuthInterceptor) {
         return new WebMvcConfigurer() {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
-                registry.addMapping("/**").allowedOrigins("*");
+                registry.addMapping("/**")
+                        .allowedOrigins("*")
+                        .allowedMethods("HEAD", "GET", "PUT", "POST", "DELETE", "PATCH");
             }
             @Override
             public void addInterceptors(InterceptorRegistry registry) {
