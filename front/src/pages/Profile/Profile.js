@@ -18,10 +18,10 @@ const NewDeviceModal = ({ isOpen, setOpen }) => {
             version: platform.version
         }
     };
-    const [os, setOs] = useState(currDevice.os.family);
-    const [osVersion, setOsVersion] = useState(currDevice.os.version);
-    const [environment, setEnvironment] = useState(currDevice.browser.name);
-    const [environmentVersion, setEnvironmentVersion] = useState(currDevice.browser.version);
+    const [os, setOs] = useState(platform.os.family);
+    const [osVersion, setOsVersion] = useState(platform.os.version);
+    const [environment, setEnvironment] = useState(platform.name);
+    const [environmentVersion, setEnvironmentVersion] = useState(platform.version);
 
     return (
         <MyModal
