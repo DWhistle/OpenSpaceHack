@@ -1,1 +1,1 @@
-export { default } from './ProfileBar';
+export { default } from './ProfileBar'

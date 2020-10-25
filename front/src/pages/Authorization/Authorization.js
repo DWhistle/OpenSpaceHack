@@ -3,7 +3,7 @@ import Button from '../../components/Button/Button'
 import { ReactComponent as Logo } from '../../assets/img/bankLogo.svg'
 import styles from './Authorization.module.less'
 import '../../App.less'
-import paths from '../../paths';
+import paths from '../../paths'
 
 const Authorization = ({ setUser }) => {
     const [login, setLogin] = useState('')
@@ -14,10 +14,10 @@ const Authorization = ({ setUser }) => {
     }
 
     const handleSubmit = (event) => {
-        event.preventDefault();
-        localStorage.setItem('role', login);
-        setUser(login);
-        window.location = paths.index;
+        event.preventDefault()
+        localStorage.setItem('role', login)
+        setUser(login)
+        window.location = paths.index
     }
 
     return (

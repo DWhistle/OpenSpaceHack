@@ -64,7 +64,13 @@ const Card = ({ item, currUser, showProfile }) => {
                     {item.place + 1}
                 </div>
                 <div className={styles.photo}>
-                    <img src={getRandomAvatar()} alt="user avatar" className={styles.avatar} />
+                    <img
+                        src={getRandomAvatar()}
+                        alt="user avatar"
+                        className={styles.avatar}
+                        width={'32px'}
+                        height={'32px'}
+                    />
                     {item.name}
                 </div>
             </div>

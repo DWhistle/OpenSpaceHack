@@ -3,8 +3,8 @@ import { ReactComponent as BTSLogo } from '../../assets/img/BTSlogo.svg'
 import React from 'react'
 import { NavLink, useRouteMatch } from 'react-router-dom'
 
-export const NavItem = ({ icon, text,  route }) => {
-    const match = useRouteMatch(route);
+export const NavItem = ({ icon, text, route }) => {
+    const match = useRouteMatch(route)
     return (
         <NavLink
             exact
@@ -21,7 +21,7 @@ export const NavItem = ({ icon, text,  route }) => {
     )
 }
 
-const NavBar = ({   navItems }) => {
+const NavBar = ({ navItems }) => {
     return (
         <div className={styles.navigation}>
             <div className={styles.logo}>
@@ -29,12 +29,7 @@ const NavBar = ({   navItems }) => {
             </div>
             <ul>
                 {navItems.map((item) => (
-                    <NavItem
-                        key={item.path}
-                        route={item}
-                        icon={item.icon}
-                        text={item.title}
-                    />
+                    <NavItem key={item.path} route={item} icon={item.icon} text={item.title} />
                 ))}
             </ul>
         </div>
