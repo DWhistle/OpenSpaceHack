@@ -8,6 +8,9 @@ import org.springframework.core.annotation.Order;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.util.AntPathMatcher;
 import org.springframework.web.context.annotation.RequestScope;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+import org.springframework.web.filter.CorsFilter;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
@@ -20,6 +23,7 @@ import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
+import java.util.Arrays;
 import java.util.function.Predicate;
 
 @Configuration
@@ -36,6 +40,31 @@ public class AppConfig {
                 .apis(RequestHandlerSelectors.any())
                 .paths(Predicate.not((PathSelectors.regex("/error.*"))))
                 .build();
+    }
+
+//    @Bean
+//    public CorsConfiguration corsConfiguration() {
+//        CorsConfiguration corsConfiguration = new CorsConfiguration();
+//        corsConfiguration.addAllowedOrigin("*");
+//        corsConfiguration.addAllowedMethod("POST");
+//        corsConfiguration.addAllowedMethod("GET");
+//        corsConfiguration.addAllowedMethod("PUT");
+//        corsConfiguration.addAllowedMethod("OPTIONS");
+//        corsConfiguration.addAllowedMethod("DELETE");
+//        corsConfiguration.addAllowedHeader("*");
+//        return corsConfiguration;
+//    }
+
+    @Bean
+    public CorsFilter corsFilter() {
+        final UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+        final CorsConfiguration config = new CorsConfiguration();
+        config.addAllowedOrigin("*");
+        config.setAllowedHeaders(Arrays.asList("Origin", "Content-Type", "Accept"));
+        config.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "OPTIONS", "DELETE", "PATCH"));
+        config.setAllowCredentials(true);
+        source.registerCorsConfiguration("/**", config);
+        return new CorsFilter(source);
     }
 
     @Bean

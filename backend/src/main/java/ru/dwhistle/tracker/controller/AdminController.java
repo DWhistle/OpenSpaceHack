@@ -12,7 +12,7 @@ import java.util.Optional;
 
 @RestController("admin")
 @RequestMapping("/admin")
-@CrossOrigin(allowedHeaders = "*", origins = "*")
+@CrossOrigin
 public class AdminController {
     private final BugReportRepository bugReportRepository;
 

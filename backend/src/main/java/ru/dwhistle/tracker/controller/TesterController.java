@@ -16,7 +16,7 @@ import java.util.stream.Collectors;
 
 @RestController("tester")
 @RequestMapping("/tester")
-@CrossOrigin(allowedHeaders = "*", origins = "*")
+@CrossOrigin
 public class TesterController {
     private final UserService userService;
 
