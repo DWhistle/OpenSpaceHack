@@ -122,7 +122,7 @@ const Profile = ({ avatar, user, userDevices, setUserDevices }) => {
                         <div className={styles.device} key={device.id}>
                     {console.log(device)}
                             <span className={styles.device__text}>
-                                OS: {device.os} {device.osVersion}
+                                OS: {device.name}
                             </span>
                             <span className={styles.device__text}>
                                 Браузер: {device.environment} {device.environmentVersion}
