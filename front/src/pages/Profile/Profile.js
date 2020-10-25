@@ -24,7 +24,7 @@ const NewDeviceModal = ({ isOpen, setOpen }) => {
                     osVersion,
                     environment,
                     environmentVersion,
-                    name: os + osVersion
+                    name: os + osVersion + ` / ${Date.now()}`
                 });
                 setOpen(false);
             }}
@@ -122,7 +122,7 @@ const Profile = ({ avatar, user, userDevices, setUserDevices }) => {
                         <div className={styles.device} key={device.id}>
                     {console.log(device)}
                             <span className={styles.device__text}>
-                                OS: {device.name}
+                                OS: {device.name ? device.name.split('/')[0]: device.name}
                             </span>
                             <span className={styles.device__text}>
                                 Браузер: {device.environment} {device.environmentVersion}
