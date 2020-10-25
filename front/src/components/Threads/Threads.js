@@ -4,6 +4,7 @@ import SearchPanel from '../SearchPanel/SearchPanel'
 import styles from './Threads.module.less'
 import BugReport from '../BugReport/BugReport'
 import Comments from '../Comments'
+import { getRandomAvatar } from '../../utils/getRandomAvatar'
 
 const items = [
     {
@@ -41,6 +42,28 @@ const threadsData = [
             'Условное описание бага, может быть очень разным. Максимальное отображение в карточке треда – 1-2 строчки.',
         liked: ['Жанна'],
         isActive: true,
+        author: 'Орехова Елизавета',
+    },
+    {
+        tags: [
+            {
+                name: 'Crash',
+                color: '#FF7F00',
+                id: 0,
+            },
+            {
+                name: 'Android',
+                color: 'rgba(0, 212, 72, 0.4)',
+                id: 1,
+            },
+        ],
+        date: '23.10.2020 в 19:34',
+        title: 'Опечатка в разделе "Дебетовые карты"',
+        description:
+            'Условное описание бага, может быть очень разным. Максимальное отображение в карточке треда – 1-2 строчки.',
+        liked: ['Жанна'],
+        isActive: true,
+        author: 'Орехова Елизавета',
     },
     {
         tags: ['Переводы', 'Опечатка', 'Срочно'],
@@ -50,15 +73,7 @@ const threadsData = [
             'Условное описание бага, может быть очень разным. Максимальное отображение в карточке треда – 1-2 строчки.',
         liked: ['Жанна'],
         isActive: true,
-    },
-    {
-        tags: ['Переводы', 'Опечатка', 'Срочно'],
-        date: '23.10.2020 в 19:34',
-        title: 'Опечатка в разделе "Дебетовые карты"',
-        description:
-            'Условное описание бага, может быть очень разным. Максимальное отображение в карточке треда – 1-2 строчки.',
-        liked: ['Жанна'],
-        isActive: true,
+        author: 'Орехова Елизавета',
     },
     {
         tags: ['Переводы', 'Опечатка', 'Срочно'],
@@ -68,6 +83,7 @@ const threadsData = [
             'Условное описание бага, может быть очень разным. Максимальное отображение в карточке треда – 1-2 строчки.',
         liked: ['Жанна'],
         isActive: false,
+        author: 'Орехова Елизавета',
     },
     {
         tags: ['Переводы', 'Опечатка', 'Срочно'],
@@ -77,6 +93,7 @@ const threadsData = [
             'Условное описание бага, может быть очень разным. Максимальное отображение в карточке треда – 1-2 строчки.',
         liked: ['Жанна'],
         isActive: false,
+        author: 'Орехова Елизавета',
     },
     {
         tags: ['Переводы', 'Опечатка', 'Срочно'],
@@ -86,6 +103,7 @@ const threadsData = [
             'Условное описание бага, может быть очень разным. Максимальное отображение в карточке треда – 1-2 строчки.',
         liked: ['Жанна'],
         isActive: true,
+        author: 'Орехова Елизавета',
     },
 ]
 
@@ -120,7 +138,26 @@ const Tweet = ({ item, showTweet, setSelectedBug }) => {
             </div>
             <div className={styles.description}>{item.description}</div>
             <div className={styles.bottom}>
-                <div className={styles.liked}>{item.liked}</div>
+                <div className={styles.liked}>
+                    <img
+                        src={getRandomAvatar()}
+                        alt="user avatar"
+                        className={styles.avatar}
+                        className={`${styles.img} ${styles.first}`}
+                    />
+                    <img
+                        src={getRandomAvatar()}
+                        alt="user avatar"
+                        className={styles.avatar}
+                        className={`${styles.img} ${styles.second}`}
+                    />
+                    <img
+                        src={getRandomAvatar()}
+                        alt="user avatar"
+                        className={styles.avatar}
+                        className={`${styles.img} ${styles.third}`}
+                    />
+                </div>
                 <span className={styles.date}>{item.date}</span>
             </div>
         </div>

@@ -3,13 +3,20 @@
     box-sizing: border-box;
     //height: 100%;
     min-height: 280px;
+    //padding: 0 16px;
     width: 100%;
 
     .tweet {
         background: #FFFFFF;
         box-sizing: border-box;
-        width: 60%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        width: 100%;
+        height: 100%;
         padding: 24px;
+        box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.12), 0px 3px 10px rgba(0, 0, 0, 0.12);
+        //border-radius: 8px;
 
         .top {
             display: flex;
@@ -40,19 +47,77 @@
             }
         }
 
-        .description {
-            font-style: normal;
+        .details {
+            display: flex;
+            justify-content: space-between;
+            .description {
+
+                font-style: normal;
             font-weight: normal;
             font-size: 16px;
             line-height: 20px;
             letter-spacing: -0.04px;
             color: #000000;
-            margin-bottom: 32px;
+            margin: 0 16px 32px 0;
+            width: 60%;
+        }
+            .device {
+            width: 20%;
+            padding: 1vw;
+            border-radius: 8px;
+            border: 2px solid #8293A3;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: flex-start;
+            &__header {
+                text-align: center;
+                width: 100%;
+            }
+            &__text {
+                font-size: 14px;
+                white-space: pre-wrap;
+                word-break: break-word;
+                &:last-child {
+                    margin: 0;
+                }
+            }
+            &__add {
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+            }
+        }
+
         }
 
         .bottom {
             display: flex;
             justify-content: space-between;
+
+            .photo {
+                align-items: center;
+                display: flex;
+
+                .avatar {
+                    margin-right: 12px;
+                }
+
+                .author {
+                    font-weight: 500;
+                    font-size: 14px;
+                    line-height: 16px;
+                    letter-spacing: -0.04px;
+                    color: #000000;
+                }
+
+                .tester {
+                    font-size: 14px;
+                    line-height: 16px;
+                    letter-spacing: -0.04px;
+                    color: #535E6E;
+                }
+            }
 
             .date {
                 font-style: normal;
